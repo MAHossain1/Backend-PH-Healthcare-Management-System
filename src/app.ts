@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from 'express';
+import { prisma } from './app/lib/prisma';
 const app: Application = express();
 
 // Enable URL-encoded form data parsing
@@ -9,7 +10,13 @@ app.use(express.json());
 
 // Basic route
 app.get('/', async (req: Request, res: Response) => {
-  res.send('Hello World! This is a basic route.');
+  const specialty = await prisma.specialty.create({
+    data: {
+      title: 'Ophthalmology',
+    },
+  });
+
+  res.status(200).json({ message: 'Hello, World!', specialty });
 });
 
 export default app;
