@@ -1,9 +1,10 @@
+./src/generated
+
 node_modules
 .env
 .env.*
 !.env.example
 dist
-/generated/prisma
 
 
 cmds.txt
