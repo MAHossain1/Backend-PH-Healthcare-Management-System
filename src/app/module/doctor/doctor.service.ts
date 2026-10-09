@@ -33,6 +33,19 @@ const getDoctorById = async (id: string) => {
         include: {
           specialty: true,
         },
+        appointments: {
+          include: {
+            patient: true,
+            schedule: true,
+            prescription: true,
+          },
+        },
+        doctorSchedules: {
+          include: {
+            schedule: true,
+          },
+        },
+        reviews: true,
       },
     },
   });
